@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const User = require('./User');
 const { OAuth2Client } = require('google-auth-library');
 
-
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // POST route for user registration
@@ -135,6 +134,13 @@ router.post('/google-login', async (req, res) => {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
+});
+
+// POST route for user logout
+router.post('/logout', (req, res) => {
+  // Implement your logout logic here
+  // Example: clear session data, cookies, or tokens
+  res.json({ msg: 'Logout successful' });
 });
 
 module.exports = router;
